@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertiser Panel :: {{ title }}</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico" />
+
+    {% block head %}{% endblock %}
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="navbar bg-base-300">
+        <div class="navbar-start">
+            <a class="btn btn-ghost text-xl" href="/">Advertiser Panel</a>
+        </div>
+    </div>
+    {% block body %}{% endblock %}
+    <div>
+        <div class="container mx-auto" style="margin-top: 10em;">
+            {% if success %}
+            <div role="alert" class="alert alert-success mt-5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span>{{ success }}</span>
+            </div>
+            {% endif %}
+
+            {% if warning %}
+            <div role="alert" class="alert alert-warning mt-5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                <span>{{ warning }}</span>
+            </div>
+            {% endif %}
+
+            {% if error %}
+            <div role="alert" class="alert alert-error mt-5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span>{{ error }}</span>
+            </div>
+            {% endif %}
+
+            {% block container %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>
